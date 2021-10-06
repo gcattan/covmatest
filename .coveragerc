@@ -5,4 +5,3 @@ omit =
     */site-packages/pytest/*
     */setup.py
     */tests/*
-    */examples/*
