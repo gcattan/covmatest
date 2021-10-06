@@ -1,0 +1,8 @@
+[report]
+include = */covmatTest/*
+omit =
+    */python?.?/*
+    */site-packages/pytest/*
+    */setup.py
+    */tests/*
+    */examples/*
