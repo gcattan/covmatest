@@ -20,6 +20,13 @@ for test purposes.
 import warnings
 warnings.filterwarnings("ignore")
 
+_instance = None
+
+def get_covmat(n_trials, n_channels):
+    global _instance
+    if _instance == None:
+        _instance = CovmatGen()
+    return _instance.get_covmat(n_trials, n_channels)
 
 class CovmatGen():
 
@@ -49,7 +56,8 @@ class CovmatGen():
         subjects = self._dataset.subject_list
         n_subjects = len(subjects)
         assert(n_subjects > 0)
-        subject = random.randint(0, n_subjects - 1)
+        i_subject = random.randint(0, n_subjects - 1)
+        subject = subjects[i_subject]
         return subject
 
     def _get_trials(self):

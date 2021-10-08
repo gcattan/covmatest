@@ -1,1 +1,1 @@
-from .get_covmat import CovmatGen
+from .get_covmat import CovmatGen, get_covmat
