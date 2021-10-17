@@ -75,7 +75,7 @@ setup(
     # Similar to `install_requires` above, these must be valid existing
     # projects.
     extras_require={  # Optional
-        'test': ['pytest', 'flake8'],
+        'tests': ['pytest', 'flake8'],
     },
 
     # If there are data files included in your packages that need to be
