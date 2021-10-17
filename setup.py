@@ -64,7 +64,7 @@ setup(
 
     platforms='any',
 
-    python_requires=">=3.6",
+    python_requires=">=3.7",
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). Users will be able to install these using the "extras"

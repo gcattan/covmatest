@@ -4,6 +4,14 @@ Generate covariance matrices for testing.
 
 ## Installation
 
+- Using pipy:
+
+```
+pip install covmatest
+```
+
+- For developers:
+
 ```
 python setup.py develop
 ```
