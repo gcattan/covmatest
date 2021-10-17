@@ -62,6 +62,10 @@ setup(
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=["alphawaves"],
 
+    platforms='any',
+    
+    python_requires=">=3.6",
+
     # List additional groups of dependencies here (e.g. development
     # dependencies). Users will be able to install these using the "extras"
     # syntax, for example:
@@ -70,10 +74,9 @@ setup(
     #
     # Similar to `install_requires` above, these must be valid existing
     # projects.
-    # extras_require={  # Optional
-    #     'dev': ['check-manifest'],
-    #     'test': ['coverage'],
-    # },
+    extras_require={  # Optional
+        'test': ['pytest', 'flake8'],
+    },
 
     # If there are data files included in your packages that need to be
     # installed, specify them here.
@@ -113,10 +116,8 @@ setup(
     # issues, where the source is hosted, where to say thanks to the package
     # maintainers, and where to support the project financially. The key is
     # what's used to render the link text on PyPI.
-    # project_urls={  # Optional
-    #     'Bug Reports': 'https://github.com/pypa/sampleproject/issues',
-    #     'Funding': 'https://donate.pypi.org',
-    #     'Say Thanks!': 'http://saythanks.io/to/example',
-    #     'Source': 'https://github.com/pypa/sampleproject/',
-    # },
+    project_urls={
+        'Bug Reports': 'https://github.com/gcattan/covmatTest/issues',
+        'Source': 'https://github.com/gcattan/covmatTest/',
+    },
 )

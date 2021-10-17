@@ -22,11 +22,13 @@ warnings.filterwarnings("ignore")
 
 _instance = None
 
+
 def get_covmat(n_trials, n_channels):
     global _instance
-    if _instance == None:
+    if _instance is None:
         _instance = CovmatGen()
     return _instance.get_covmat(n_trials, n_channels)
+
 
 class CovmatGen():
 
@@ -61,7 +63,8 @@ class CovmatGen():
         return subject
 
     def _get_trials(self):
-        events = mne.find_events(raw=self._raw, shortest_event=1, verbose=False)
+        events = mne.find_events(raw=self._raw, shortest_event=1,
+                                 verbose=False)
         event_id = {'closed': 1, 'open': 2}
         epochs = mne.Epochs(self._raw, events, event_id, tmin=2.0, tmax=8.0,
                             baseline=None, verbose=False, preload=True)
@@ -81,7 +84,8 @@ class CovmatGen():
         n_matrices : int
             The number of covariance matrices to return.
         n_channels: int
-            The number of channels in a matrix.
+            The number of channels (>= 1 and <= 16)
+            in a matrix.
 
         Returns
         -------
