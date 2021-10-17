@@ -15,7 +15,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
 
-    name='covmatTest',
+    name='covmatest',
 
     version='0.1',
 
@@ -27,7 +27,7 @@ setup(
 
     long_description_content_type='text/markdown',
 
-    url='https://github.com/gcattan/covmatTest',
+    url='https://github.com/gcattan/covmatest',
 
     author='Gregoire Cattan',
 
@@ -117,7 +117,7 @@ setup(
     # maintainers, and where to support the project financially. The key is
     # what's used to render the link text on PyPI.
     project_urls={
-        'Bug Reports': 'https://github.com/gcattan/covmatTest/issues',
-        'Source': 'https://github.com/gcattan/covmatTest/',
+        'Bug Reports': 'https://github.com/gcattan/covmatest/issues',
+        'Source': 'https://github.com/gcattan/covmatest/',
     },
 )

@@ -1,5 +1,5 @@
 [report]
-include = */covmatTest/*
+include = */covmatest/*
 omit =
     */python?.?/*
     */site-packages/pytest/*

@@ -1,5 +1,5 @@
 import pytest
-from covmatTest.utils import is_symmetric_positive_definite
+from covmatest.utils import is_symmetric_positive_definite
 
 
 @pytest.fixture
