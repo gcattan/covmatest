@@ -1,4 +1,5 @@
 # covmatTest
+
 Generate covariance matrices for testing
 
 ## Installation
@@ -16,3 +17,8 @@ n_channels = 2
 covmat = get_covmat(n_matrices, n_channels)
 print(covmat)
 ```
+
+## Environment
+
+- Ubuntu, Windows, MacOs
+- Python 3.7 and 3.8

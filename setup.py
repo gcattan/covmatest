@@ -63,7 +63,7 @@ setup(
     install_requires=["alphawaves"],
 
     platforms='any',
-    
+
     python_requires=">=3.6",
 
     # List additional groups of dependencies here (e.g. development
