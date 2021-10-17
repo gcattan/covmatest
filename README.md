@@ -30,3 +30,8 @@ print(covmat)
 
 - Ubuntu, Windows, MacOs
 - Python 3.7 and 3.8
+
+## How to cite?
+
+G. Cattan, covmatest. 2021. [Online]. Available: https://github.com/gcattan/covmatest/
+DOI: https://doi.org/10.5281/zenodo.5574548
