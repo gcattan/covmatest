@@ -18,6 +18,7 @@ for test purposes.
 # License: Apache 2.0
 
 import warnings
+
 warnings.filterwarnings("ignore")
 
 _instance = None
@@ -30,7 +31,7 @@ def get_covmat(n_trials, n_channels):
     return _instance.get_covmat(n_trials, n_channels)
 
 
-class CovmatGen():
+class CovmatGen:
 
     """Generate test covariance matrices.
 
@@ -52,29 +53,36 @@ class CovmatGen():
         self._raw = self._dataset._get_single_subject_data(subject)
         self._trials = self._get_trials()
         self._n_trials = len(self._trials)
-        assert(self._n_trials > 0)
+        assert self._n_trials > 0
 
     def _get_random_subject(self):
         subjects = self._dataset.subject_list
         n_subjects = len(subjects)
-        assert(n_subjects > 0)
+        assert n_subjects > 0
         i_subject = random.randint(0, n_subjects - 1)
         subject = subjects[i_subject]
         return subject
 
     def _get_trials(self):
-        events = mne.find_events(raw=self._raw, shortest_event=1,
-                                 verbose=False)
-        event_id = {'closed': 1, 'open': 2}
-        epochs = mne.Epochs(self._raw, events, event_id, tmin=2.0, tmax=8.0,
-                            baseline=None, verbose=False, preload=True)
+        events = mne.find_events(raw=self._raw, shortest_event=1, verbose=False)
+        event_id = {"closed": 1, "open": 2}
+        epochs = mne.Epochs(
+            self._raw,
+            events,
+            event_id,
+            tmin=2.0,
+            tmax=8.0,
+            baseline=None,
+            verbose=False,
+            preload=True,
+        )
         epochs.pick_types(eeg=True)
         return epochs.get_data()
 
     def _get_covmat(self, n_channels):
         index = random.randint(0, self._n_trials - 1)
         trial = np.array([self._trials[index][:n_channels, :]])
-        return Covariances(estimator='lwf').fit_transform(trial)
+        return Covariances(estimator="lwf").fit_transform(trial)
 
     def get_covmat(self, n_matrices, n_channels):
         """Get a set of covariance matrices.
