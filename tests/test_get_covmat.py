@@ -16,11 +16,11 @@ def test_not_allowed_indices():
         for channel in [-1, 0, 17]:
             try:
                 get_covmat(trial, channel)
-                assert(False)  # should not be possible
+                assert False  # should not be possible
             except Exception:
                 pass
 
 
 def test_is_spd(is_spd):
     for channel in range(1, 17):
-        assert(is_spd(get_covmat(100, channel)))
+        assert is_spd(get_covmat(100, channel))
