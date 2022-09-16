@@ -1,3 +1,5 @@
+<img type="image/svg" src="https://byob.yarr.is/gcattan/covmatest/score"/>
+
 # covmatest
 
 Generate covariance matrices for testing.
