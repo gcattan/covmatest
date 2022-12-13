@@ -34,6 +34,11 @@ def get_covmat(n_trials, n_channels):
 class CovmatGen:
 
     """Generate test covariance matrices.
+    
+    Parameters
+    ----------
+    seed: int|None (default: None)
+        The seed for the random number generator.
 
     References
     ----------
@@ -47,7 +52,8 @@ class CovmatGen:
 
     """
 
-    def __init__(self):
+    def __init__(self, seed=None):
+        random.seed(seed)
         self._dataset = AlphaWaves(useMontagePosition=False)
         subject = self._get_random_subject()
         self._raw = self._dataset._get_single_subject_data(subject)
