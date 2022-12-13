@@ -34,7 +34,7 @@ def get_covmat(n_trials, n_channels):
 class CovmatGen:
 
     """Generate test covariance matrices.
-    
+
     Parameters
     ----------
     seed: int|None (default: None)
