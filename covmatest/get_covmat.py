@@ -48,7 +48,7 @@ class CovmatGen:
     """
 
     def __init__(self):
-        self._dataset = AlphaWaves(useMontagePosition=False)
+        self._dataset = AlphaWaves()
         subject = self._get_random_subject()
         self._raw = self._dataset._get_single_subject_data(subject)
         self._trials = self._get_trials()
