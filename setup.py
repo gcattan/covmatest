@@ -46,7 +46,7 @@ setup(
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=["alphawaves==0.4"],
     platforms="any",
-    python_requires=">=3.7",
+    python_requires=">=3.8",
     # List additional groups of dependencies here (e.g. development
     # dependencies). Users will be able to install these using the "extras"
     # syntax, for example:
