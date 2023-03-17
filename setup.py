@@ -15,7 +15,7 @@ with open(path.join(here, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="covmatest",
-    version="0.2",
+    version="0.2.1",
     license="Apache 2.0",
     description="Alpha Waves Dataset",
     long_description=long_description,
