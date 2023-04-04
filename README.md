@@ -31,7 +31,7 @@ print(covmat)
 ## Environment
 
 - Ubuntu, Windows, MacOs
-- Python 3.7, 3.8 and 3.9
+- Python 3.8 and 3.9
 
 ## How to cite?
 
