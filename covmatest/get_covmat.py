@@ -23,6 +23,7 @@ warnings.filterwarnings("ignore")
 
 _instance = None
 
+
 def get_covmat(n_trials, n_channels, seed=None):
     """Get a set of covariance matrices.
 
@@ -40,7 +41,7 @@ def get_covmat(n_trials, n_channels, seed=None):
     -------
     covset : ndarray of int, shape (n_matrices, n_channels, n_channels)
         A set of covariance matrices.
-    """    
+    """
     global _instance
     if _instance is None:
         _instance = CovmatGen(seed)
@@ -71,7 +72,7 @@ class CovmatGen:
     """
 
     def __init__(self, seed=None):
-        if(not seed == None):
+        if not seed == None:
             random.seed(seed)
         self._seed = seed
         self._dataset = AlphaWaves(useMontagePosition=False)
