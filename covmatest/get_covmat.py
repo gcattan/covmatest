@@ -72,7 +72,7 @@ class CovmatGen:
     """
 
     def __init__(self, seed=None):
-        if(not seed is None):
+        if not seed is None:
             random.seed(seed)
         self._seed = seed
         self._dataset = AlphaWaves(useMontagePosition=False)
