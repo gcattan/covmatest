@@ -45,7 +45,7 @@ def get_covmat(n_trials, n_channels, seed=None):
     global _instance
     if _instance is None:
         _instance = CovmatGen(seed)
-    elif not seed == None:
+    elif not seed is None:
         random.seed(seed)
     return _instance.get_covmat(n_trials, n_channels)
 
@@ -72,7 +72,7 @@ class CovmatGen:
     """
 
     def __init__(self, seed=None):
-        if not seed == None:
+        if(not seed is None):
             random.seed(seed)
         self._seed = seed
         self._dataset = AlphaWaves(useMontagePosition=False)
