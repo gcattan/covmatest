@@ -23,11 +23,29 @@ warnings.filterwarnings("ignore")
 
 _instance = None
 
+def get_covmat(n_trials, n_channels, seed=None):
+    """Get a set of covariance matrices.
 
-def get_covmat(n_trials, n_channels):
+    Parameters
+    ----------
+    n_matrices : int
+        The number of covariance matrices to return.
+    n_channels: int
+        The number of channels (>= 1 and <= 16)
+        in a matrix.
+    seed: int|None (default: None)
+        The seed for the random number generator.
+
+    Returns
+    -------
+    covset : ndarray of int, shape (n_matrices, n_channels, n_channels)
+        A set of covariance matrices.
+    """    
     global _instance
     if _instance is None:
-        _instance = CovmatGen()
+        _instance = CovmatGen(seed)
+    elif not seed == None:
+        random.seed(seed)
     return _instance.get_covmat(n_trials, n_channels)
 
 
@@ -55,6 +73,7 @@ class CovmatGen:
     def __init__(self, seed=None):
         if(not seed == None):
             random.seed(seed)
+        self._seed = seed
         self._dataset = AlphaWaves(useMontagePosition=False)
         subject = self._get_random_subject()
         self._raw = self._dataset._get_single_subject_data(subject)
