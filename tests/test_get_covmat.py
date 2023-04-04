@@ -24,3 +24,11 @@ def test_not_allowed_indices():
 def test_is_spd(is_spd):
     for channel in range(1, 17):
         assert is_spd(get_covmat(100, channel))
+
+
+def test_seed():
+    covmat1 = get_covmat(1, 1, 42)
+    covmat1bis = get_covmat(1, 1, 42)
+    covmat2 = get_covmat(1, 1, 43)
+    assert not covmat1[0][0] == covmat2[0][0]
+    assert covmat1[0][0] == covmat1bis[0][0]
