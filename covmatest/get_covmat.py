@@ -48,7 +48,7 @@ def get_covmat(n_trials, n_channels, returns_A=True, returns_B=True, seed=None):
     """
     global _instance
     if _instance is None:
-        _instance = CovmatGen(seed, returns_A, returns_B)
+        _instance = CovmatGen(returns_A, returns_B, seed)
     elif seed is not None:
         random.seed(seed)
     return _instance.get_covmat(n_trials, n_channels)
