@@ -36,10 +36,8 @@ def test_seed():
 
 def test_returns_A_B():
     n_matrices, n_channels = 1, 1
-    classA = get_covmat(
-        n_matrices, n_channels, returns_A=True, returns_B=False, seed=42
-    )
-    classB = get_covmat(
-        n_matrices, n_channels, returns_A=False, returns_B=True, seed=42
-    )
+    classA = CovmatGen(returns_A=True, returns_B=False)
+        .get_covmat(n_matrices, n_channels)
+    classB = CovmatGen(returns_A=False, returns_B=True)
+        .get_covmat(n_matrices, n_channels)
     assert not classA[0][0] == classB[0][0]
