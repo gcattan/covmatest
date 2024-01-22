@@ -32,3 +32,10 @@ def test_seed():
     covmat2 = get_covmat(1, 1, 43)
     assert not covmat1[0][0] == covmat2[0][0]
     assert covmat1[0][0] == covmat1bis[0][0]
+
+
+def test_returns_A_B():
+    n_matrices, n_channels = 3, 2
+    classA = get_covmat(n_matrices, n_channels, returns_A=True, returns_B=False, seed=42)
+    classB = get_covmat(n_matrices, n_channels, returns_A=False, returns_B=True, seed=42)
+    assert not classA[0][0] == classB[0][0]
