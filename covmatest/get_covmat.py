@@ -24,7 +24,7 @@ warnings.filterwarnings("ignore")
 _instance = None
 
 
-def get_covmat(n_trials, n_channels, seed=None, returns_A=True, returns_B=True):
+def get_covmat(n_trials, n_channels, returns_A=True, returns_B=True, seed=None):
     """Get a set of covariance matrices.
 
     Parameters
@@ -34,12 +34,12 @@ def get_covmat(n_trials, n_channels, seed=None, returns_A=True, returns_B=True):
     n_channels: int
         The number of channels (>= 1 and <= 16)
         in a matrix.
-    seed: int|None (default: None)
-        The seed for the random number generator.
     returns_A: boolean (default: True)
         Return the "closed" epochs from the Alphawaves dataset.
     returns_B: boolean (default: True)
         Return the "open" epochs from the Alphawaves dataset.
+    seed: int|None (default: None)
+        The seed for the random number generator.
 
     Returns
     -------
@@ -60,12 +60,12 @@ class CovmatGen:
 
     Parameters
     ----------
-    seed: int|None (default: None)
-        The seed for the random number generator.
     returns_A: boolean (default: True)
         Return the "closed" epochs from the Alphawaves dataset.
     returns_B: boolean (default: True)
         Return the "open" epochs from the Alphawaves dataset.
+    seed: int|None (default: None)
+        The seed for the random number generator.
 
     References
     ----------
@@ -79,12 +79,12 @@ class CovmatGen:
 
     """
 
-    def __init__(self, seed=None, returns_A=True, returns_B=True):
+    def __init__(self, returns_A=True, returns_B=True, seed=None):
         if seed is not None:
             random.seed(seed)
-        self._seed = seed
         self._returns_A = returns_A
         self._returns_B = returns_B
+        self._seed = seed
         self._dataset = AlphaWaves()
         subject = self._get_random_subject()
         self._raw = self._dataset._get_single_subject_data(subject)
