@@ -58,6 +58,10 @@ class CovmatGen:
     ----------
     seed: int|None (default: None)
         The seed for the random number generator.
+    returns_A: boolean (default: True)
+        Return the "closed" epochs from the Alphawaves dataset.
+    returns_B: boolean (default: True)
+        Return the "open" epochs from the Alphawaves dataset.
 
     References
     ----------
@@ -71,7 +75,7 @@ class CovmatGen:
 
     """
 
-    def __init__(self, seed=None):
+    def __init__(self, seed=None, returns_A=True, returns_B=True):
         if seed is not None:
             random.seed(seed)
         self._seed = seed
@@ -80,6 +84,8 @@ class CovmatGen:
         self._raw = self._dataset._get_single_subject_data(subject)
         self._trials = self._get_trials()
         self._n_trials = len(self._trials)
+        self._returns_A = returns_A
+        self._return_B = returns_B
         assert self._n_trials > 0
 
     def _get_random_subject(self):
@@ -92,7 +98,13 @@ class CovmatGen:
 
     def _get_trials(self):
         events = mne.find_events(raw=self._raw, shortest_event=1, verbose=False)
-        event_id = {"closed": 1, "open": 2}
+        event_id = {}
+
+        if self._returns_A:
+            event_id["closed"] = 1
+        if self._returns_B:
+            event_id["open"] = 2
+
         epochs = mne.Epochs(
             self._raw,
             events,
