@@ -102,7 +102,7 @@ class CovmatGen:
 
     def _get_trials(self):
         events = mne.find_events(raw=self._raw, shortest_event=1, verbose=False)
-        warnings.warn(events)
+
         events = [
             e
             for e in events
