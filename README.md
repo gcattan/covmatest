@@ -20,12 +20,21 @@ python setup.py develop
 
 ## Usage
 
+### Example 1
 ```
 from covmatest import get_covmat
 n_matrices = 3
 n_channels = 2
 covmat = get_covmat(n_matrices, n_channels)
 print(covmat)
+```
+
+### Example 2
+```
+from covmatest import get_covmat
+n_matrices, n_channels = 3, 2
+classA = get_covmat(n_matrices, n_channels, returns_A=True, returns_B=False)
+classB = get_covmat(n_matrices, n_channels, returns_A=False, returns_B=True)
 ```
 
 ## Environment

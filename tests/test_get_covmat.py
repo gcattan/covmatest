@@ -27,8 +27,19 @@ def test_is_spd(is_spd):
 
 
 def test_seed():
-    covmat1 = get_covmat(1, 1, 42)
-    covmat1bis = get_covmat(1, 1, 42)
-    covmat2 = get_covmat(1, 1, 43)
+    covmat1 = get_covmat(1, 1, seed=42)
+    covmat1bis = get_covmat(1, 1, seed=42)
+    covmat2 = get_covmat(1, 1, seed=43)
     assert not covmat1[0][0] == covmat2[0][0]
     assert covmat1[0][0] == covmat1bis[0][0]
+
+
+def test_returns_A_B():
+    n_matrices, n_channels = 1, 1
+    classA = CovmatGen(returns_A=True, returns_B=False).get_covmat(
+        n_matrices, n_channels
+    )
+    classB = CovmatGen(returns_A=False, returns_B=True).get_covmat(
+        n_matrices, n_channels
+    )
+    assert not classA[0][0] == classB[0][0]
