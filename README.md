@@ -33,8 +33,8 @@ print(covmat)
 ```
 from covmatest import get_covmat
 n_matrices, n_channels = 3, 2
-classA = get_covmat(n_matrices, n_channels, seed=None, returns_A=True, returns_B=False)
-classB = get_covmat(n_matrices, n_channels, seed=None, returns_A=False, returns_B=True)
+classA = get_covmat(n_matrices, n_channels, returns_A=True, returns_B=False)
+classB = get_covmat(n_matrices, n_channels, returns_A=False, returns_B=True)
 ```
 
 ## Environment
