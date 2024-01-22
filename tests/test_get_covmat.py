@@ -27,9 +27,9 @@ def test_is_spd(is_spd):
 
 
 def test_seed():
-    covmat1 = get_covmat(1, 1, 42)
-    covmat1bis = get_covmat(1, 1, 42)
-    covmat2 = get_covmat(1, 1, 43)
+    covmat1 = get_covmat(1, 1, seed=42)
+    covmat1bis = get_covmat(1, 1, seed=42)
+    covmat2 = get_covmat(1, 1, seed=43)
     assert not covmat1[0][0] == covmat2[0][0]
     assert covmat1[0][0] == covmat1bis[0][0]
 
