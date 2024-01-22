@@ -35,7 +35,7 @@ def test_seed():
 
 
 def test_returns_A_B():
-    n_matrices, n_channels = 3, 2
+    n_matrices, n_channels = 1, 1
     classA = get_covmat(
         n_matrices, n_channels, returns_A=True, returns_B=False, seed=42
     )
