@@ -102,6 +102,9 @@ class CovmatGen:
 
     def _get_trials(self):
         events = mne.find_events(raw=self._raw, shortest_event=1, verbose=False)
+        events = [e for e in events \
+                  if e[2] == 1 and self._returns_A or \
+                  e[2] == 2 and self._returns_B]
         event_id = {}
 
         if self._returns_A:
