@@ -107,7 +107,7 @@ class CovmatGen:
             for e in events
             if (e[2] == 1 and self._returns_A) or (e[2] == 2 and self._returns_B)
         ]
-        print(events)
+        warn(events)
         event_id = {}
 
         if self._returns_A:
