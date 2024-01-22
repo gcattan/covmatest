@@ -83,13 +83,13 @@ class CovmatGen:
         if seed is not None:
             random.seed(seed)
         self._seed = seed
+        self._returns_A = returns_A
+        self._returns_B = returns_B
         self._dataset = AlphaWaves()
         subject = self._get_random_subject()
         self._raw = self._dataset._get_single_subject_data(subject)
         self._trials = self._get_trials()
         self._n_trials = len(self._trials)
-        self._returns_A = returns_A
-        self._returns_B = returns_B
         assert self._n_trials > 0
 
     def _get_random_subject(self):
