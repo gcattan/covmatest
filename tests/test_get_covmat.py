@@ -1,4 +1,4 @@
-from covmatest import get_covmat
+from covmatest import get_covmat, CovmatGen
 
 
 def test_canary(is_spd):
