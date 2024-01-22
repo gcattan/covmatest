@@ -109,7 +109,11 @@ class CovmatGen:
             if (e[2] == 1 and self._returns_A) or (e[2] == 2 and self._returns_B)
         ]
 
-        event_id = {"closed": 1, "open": 2}
+        event_id = {}
+        if self._returns_A:
+            event_id["closed"] = 1
+        if self._returns_B:
+            event_id["open"] = 2
 
         epochs = mne.Epochs(
             self._raw,
