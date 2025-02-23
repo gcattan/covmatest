@@ -24,12 +24,9 @@ warnings.filterwarnings("ignore")
 _instance = None
 
 
-def get_covmat(n_trials,
-               n_channels,
-               returns_A=True,
-               returns_B=True,
-               seed=None,
-               estimator="lwf"):
+def get_covmat(
+    n_trials, n_channels, returns_A=True, returns_B=True, seed=None, estimator="lwf"
+):
     """Get a set of covariance matrices.
 
     Parameters
@@ -95,11 +92,7 @@ class CovmatGen:
     [3] https://pyriemann.readthedocs.io/en/latest/generated/pyriemann.utils.covariance.covariances.html#pyriemann.utils.covariance.covariances
     """
 
-    def __init__(self,
-                 returns_A=True,
-                 returns_B=True,
-                 seed=None,
-                 estimator="lwf"):
+    def __init__(self, returns_A=True, returns_B=True, seed=None, estimator="lwf"):
         if seed is not None:
             random.seed(seed)
         self._returns_A = returns_A
