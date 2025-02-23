@@ -24,7 +24,9 @@ warnings.filterwarnings("ignore")
 _instance = None
 
 
-def get_covmat(n_trials, n_channels, returns_A=True, returns_B=True, seed=None):
+def get_covmat(
+    n_trials, n_channels, returns_A=True, returns_B=True, seed=None, estimator="lwf"
+):
     """Get a set of covariance matrices.
 
     Parameters
@@ -40,15 +42,23 @@ def get_covmat(n_trials, n_channels, returns_A=True, returns_B=True, seed=None):
         Return the "open" epochs from the Alphawaves dataset.
     seed: int|None (default: None)
         The seed for the random number generator.
+    estimator: str (default: string)
+        The estimator for the covariance matrix.
+        See [1]_ for the possible options.
 
     Returns
     -------
     covset : ndarray of int, shape (n_matrices, n_channels, n_channels)
         A set of covariance matrices.
+
+    References
+    ----------
+    [1] \
+        https://pyriemann.readthedocs.io/en/latest/generated/pyriemann.utils.covariance.covariances.html#pyriemann.utils.covariance.covariances
     """
     global _instance
     if _instance is None:
-        _instance = CovmatGen(returns_A, returns_B, seed)
+        _instance = CovmatGen(returns_A, returns_B, seed, estimator)
     elif seed is not None:
         random.seed(seed)
     return _instance.get_covmat(n_trials, n_channels)
@@ -66,6 +76,9 @@ class CovmatGen:
         Return the "open" epochs from the Alphawaves dataset.
     seed: int|None (default: None)
         The seed for the random number generator.
+    estimator: str (default: string)
+        The estimator for the covariance matrix.
+        See [3]_ for the possible options.
 
     References
     ----------
@@ -77,9 +90,11 @@ class CovmatGen:
             Research Report, décembre 2018. Available from:
             https://hal.archives-ouvertes.fr/hal-02086581
 
+    [3] \
+        https://pyriemann.readthedocs.io/en/latest/generated/pyriemann.utils.covariance.covariances.html#pyriemann.utils.covariance.covariances
     """
 
-    def __init__(self, returns_A=True, returns_B=True, seed=None):
+    def __init__(self, returns_A=True, returns_B=True, seed=None, estimator="lwf"):
         if seed is not None:
             random.seed(seed)
         self._returns_A = returns_A
@@ -90,6 +105,7 @@ class CovmatGen:
         self._raw = self._dataset._get_single_subject_data(subject)
         self._trials = self._get_trials()
         self._n_trials = len(self._trials)
+        self.estimator = estimator
         assert self._n_trials > 0
 
     def _get_random_subject(self):
@@ -131,7 +147,7 @@ class CovmatGen:
     def _get_covmat(self, n_channels):
         index = random.randint(0, self._n_trials - 1)
         trial = np.array([self._trials[index][:n_channels, :]])
-        return Covariances(estimator="lwf").fit_transform(trial)
+        return Covariances(estimator=self.estimator).fit_transform(trial)
 
     def get_covmat(self, n_matrices, n_channels):
         """Get a set of covariance matrices.
