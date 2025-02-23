@@ -53,7 +53,8 @@ def get_covmat(
 
     References
     ----------
-    [1] https://pyriemann.readthedocs.io/en/latest/generated/pyriemann.utils.covariance.covariances.html#pyriemann.utils.covariance.covariances
+    [1] \
+        https://pyriemann.readthedocs.io/en/latest/generated/pyriemann.utils.covariance.covariances.html#pyriemann.utils.covariance.covariances
     """
     global _instance
     if _instance is None:
@@ -89,7 +90,8 @@ class CovmatGen:
             Research Report, décembre 2018. Available from:
             https://hal.archives-ouvertes.fr/hal-02086581
 
-    [3] https://pyriemann.readthedocs.io/en/latest/generated/pyriemann.utils.covariance.covariances.html#pyriemann.utils.covariance.covariances
+    [3] \
+        https://pyriemann.readthedocs.io/en/latest/generated/pyriemann.utils.covariance.covariances.html#pyriemann.utils.covariance.covariances
     """
 
     def __init__(self, returns_A=True, returns_B=True, seed=None, estimator="lwf"):
